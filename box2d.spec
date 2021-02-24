@@ -4,7 +4,7 @@
 #
 Name     : box2d
 Version  : 2.4.1
-Release  : 1
+Release  : 2
 URL      : https://github.com/erincatto/box2d/archive/v2.4.1/box2d-2.4.1.tar.gz
 Source0  : https://github.com/erincatto/box2d/archive/v2.4.1/box2d-2.4.1.tar.gz
 Summary  : No detailed summary available
@@ -15,7 +15,7 @@ Requires: box2d-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : doxygen
 BuildRequires : glibc-dev
-BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
+BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
 
 %description
 ![Box2D Logo](https://box2d.org/images/logo.svg)
