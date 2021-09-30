@@ -4,7 +4,7 @@
 #
 Name     : box2d
 Version  : 2.4.1
-Release  : 2
+Release  : 3
 URL      : https://github.com/erincatto/box2d/archive/v2.4.1/box2d-2.4.1.tar.gz
 Source0  : https://github.com/erincatto/box2d/archive/v2.4.1/box2d-2.4.1.tar.gz
 Summary  : No detailed summary available
@@ -16,6 +16,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : doxygen
 BuildRequires : glibc-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
+Patch1: 0001-Update-doctest-version.patch
 
 %description
 ![Box2D Logo](https://box2d.org/images/logo.svg)
@@ -53,29 +54,30 @@ license components for the box2d package.
 %prep
 %setup -q -n box2d-2.4.1
 cd %{_builddir}/box2d-2.4.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1613155432
+export SOURCE_DATE_EPOCH=1633045819
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1613155432
+export SOURCE_DATE_EPOCH=1633045819
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/box2d
 cp %{_builddir}/box2d-2.4.1/LICENSE %{buildroot}/usr/share/package-licenses/box2d/bd0acc66ecec5d3dcb01cd1c45d873766fbe93d1
